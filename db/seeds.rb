@@ -20,7 +20,11 @@ posts = Post.all
         body: RandomData.random_paragraph
    )
 end
- 
+
+Post.create_with(id: 111).find_or_create_by(title: "Unique Post", body: "The most unique paragraph there everywas")
+    
+Comment.find_or_create_by(body: "love how unique this is", post_id: 111)    
+
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
