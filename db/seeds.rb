@@ -27,7 +27,15 @@ end
         title: RandomData.random_sentence,
         copy: RandomData.random_paragraph,
         price: 100000)
-end        
+end
+
+
+10.times do
+    Question.create!(
+        title: RandomData.random_sentence,
+        body: RandomData.random_paragraph,
+        resolved: false)
+end   
 
 Post.create_with(id: 111).find_or_create_by(title: "Unique Post", body: "The most unique paragraph there everywas")
     
