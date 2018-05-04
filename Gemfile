@@ -45,6 +45,8 @@
  
  gem 'bootstrap-sass'
  
+ gem 'bcrypt'
+ 
  gem 'pry-rails'
  
  group :development do
