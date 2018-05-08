@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :advertisements
   
   resources :users, only: [:new, :create]
+  post 'users/confirm' => 'users#confirm'
+  
 
   resources :topics do
       resources :posts, except: [:index]
