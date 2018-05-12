@@ -1,5 +1,17 @@
 require 'random_data'
 
+5.times do
+    User.create!(
+        
+        name: RandomData.random_name,
+        email: RandomData.random_email,
+        password: RandomData.random_sentence
+    )
+end
+
+users= User.all
+    
+
 15.times do
    Topic.create!(
      name:         RandomData.random_sentence,
@@ -13,6 +25,7 @@ topics = Topic.all
 50.times do
 
     Post.create!(
+        user: users.sample,
         topic:  topics.sample,
         title:  RandomData.random_sentence,
         body:   RandomData.random_paragraph
@@ -62,9 +75,14 @@ Post.create_with(id: 111).find_or_create_by(title: "Unique Post", body: "The mos
     
 Comment.find_or_create_by(body: "love how unique this is", post_id: 111)
 
-
+user = User.first
+user.update_attributes!(
+    email: 'lizalepage@gmail.com',
+    password: 'bubbles16'
+    )
 
 puts "Seed finished"
+puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
