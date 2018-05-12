@@ -3,6 +3,7 @@ class User < ApplicationRecord
     before_save { self.email = email.downcase if email.present?}
 
     before_save :format_user_name
+    before_save {self.role ||= :member }
     
     validates :name, length: { minimum: 1, maximum: 100 }, presence: true
     
@@ -26,5 +27,7 @@ class User < ApplicationRecord
             end 
         self.name = name_array.join(" ")
         end
-    end    
+    end 
+    
+    enum role: [:member, :admin]
 end
