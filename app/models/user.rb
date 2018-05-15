@@ -1,5 +1,7 @@
 class User < ApplicationRecord
     has_many :posts, dependent: :destroy
+    has_many :comments, dependent: :destroy
+    has_many :votes, dependent: :destroy
     before_save { self.email = email.downcase if email.present?}
 
     before_save :format_user_name
@@ -29,5 +31,5 @@ class User < ApplicationRecord
         end
     end 
     
-    enum role: [:member, :admin]
+    enum role: [:member, :admin, :moderator]
 end
