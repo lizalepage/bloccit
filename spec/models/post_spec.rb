@@ -16,6 +16,7 @@ RSpec.describe Post, type: :model do
     
     it { is_expected.to have_many(:comments) }
     it { is_expected.to have_many(:votes) }
+    it { is_expected.to have_many(:favorites) }
     
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:body) }
@@ -78,6 +79,24 @@ RSpec.describe Post, type: :model do
             post.votes.create!(value: -1, user: user)
             expect(post.rank).to eq (old_rank - 1)
         end
-    end    
+    end
+   end
+   
+   describe "#create_vote" do
+        it "sets post up votes to 1" do
+            expect(post.up_votes).to eq(1)
+            
+        end
+        
+        it "create vote is called when post is created" do
+            post = topic.posts.new(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)
+            expect(post).to receive(:create_vote)
+            post.save
+        end
+        
+        it "assigns vote to the post users" do
+            expect(post.votes.first.user).to eq(post.user)
+        end    
+           
    end
 end

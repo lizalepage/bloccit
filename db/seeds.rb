@@ -52,7 +52,7 @@ end
  
 
 
-100.times do
+500.times do
     Comment.create!(
         user: users.sample,
         post: posts.sample,
@@ -90,7 +90,7 @@ admin = User.create!(
  
 member = User.create!(
    name:     'Member User',
-   email:    'member@example.com',
+   email:    'lizalepage@gmail.com',
    password: 'helloworld'
  )
 
