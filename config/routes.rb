@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :advertisements
   
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
   post 'users/confirm' => 'users#confirm'
   
   resources :sessions, only: [:new, :create, :destroy]
