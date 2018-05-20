@@ -1,0 +1,8 @@
+Your created to "<%= @post.title %>"
+ <%= "=" * (@post.title.length + 12) %>
+ 
+ You are now following this post
+ 
+ <%= @post.body %>
+ 
+ Visit online at: <%= topic_post_url(@post.topic, @post) %>
