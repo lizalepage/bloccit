@@ -23,7 +23,16 @@
  
  
  <h2>Posts</h2>
- <%= render @user.posts %>
+     <% if any_posts %>
+         <%= render @user.posts %>
+     
+     <% else %>
+        <%= @user.name %> has not created any posts
+    <% end %>    
  
  <h2>Comments</h2>
- <%= render @user.comments %>
+     <% if any_comments %>
+          <%= render @user.comments %>
+    <% else %>
+         <%= @user.name %> has not submitted any comments yet.
+    <% end %>     

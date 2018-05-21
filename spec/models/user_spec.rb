@@ -116,8 +116,17 @@ RSpec.describe User, type: :model do
             
             expect(known_user.avatar_url(48)).to eq(expected_gravatar)
         end
+    end
+    
+    describe ".favorite_list"
+        it "returns list of favorited posts" do
+            expected_favorite_count = user.favorites.count
+            
+            expect(user.favorite.count).to eq(expected_favorite_count)
+        end
+        
     end    
-end
+
 
 
 
