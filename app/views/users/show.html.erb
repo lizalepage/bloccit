@@ -35,4 +35,32 @@
           <%= render @user.comments %>
     <% else %>
          <%= @user.name %> has not submitted any comments yet.
-    <% end %>     
+    <% end %>
+    
+<h2> Favorites</h2>
+    <% if any_favorite_posts %>
+         
+         <% @user.favorite_posts.each do |post| %>
+       <div class="media">
+           <%= image_tag avatar_url, class: 'media-object pull-left' %>
+         <div class="media-body">
+           <h4 class="media-heading">
+               
+            <%= link_to post.title, topic_post_path(post.topic, post) %><br/>
+             By: <%= post.user.name %> <br/>
+            <%= post.votes.count %> votes, <%= post.comments.count %> comments
+             
+             
+           </h4>
+           <small>
+            
+            submitted <%= time_ago_in_words(post.created_at) %> ago <br>
+           </small>
+         </div>
+       </div>
+     <% end %>
+    <% else %>    
+        <%= @user.name %> has not favorited any poss yet.
+    <% end %>    
+    
+    
